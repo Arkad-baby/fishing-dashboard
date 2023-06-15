@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+
+model Example {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model admin{
+    id String @id @default(uuid())
+    userName String
+    password String
+}
+
+model farmers{
+        id String @id @default(uuid())
+    userName String
+    location String
+    number String
+    farmName String
+    farmCapacity Int
+    active Boolean
+}
+
+model buyer{
+     id String @id @default(uuid())
+    userName String
+    location String
+    number String
+      active Boolean
+}
+
+model farmerRquest{
+        id String @id @default(uuid())
+    userName String
+    location String
+    number String
+      pendingStatus Boolean 
+}
+
+model buyerRquest{
+        id String @id @default(uuid())
+    userName String
+    location String
+    number String
+      pendingStatus Boolean 
+}
